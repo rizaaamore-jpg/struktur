@@ -3,16 +3,28 @@ if(localStorage.getItem("login")!=="siswa")location.href="../index.html";
 </script>
 
 <link rel="stylesheet" href="../css/dashboard.css">
+
 <div class="sidebar">
   <button class="toggle" onclick="toggleSidebar()">☰</button>
   <div class="menu">
     <a href="#">Dashboard</a>
     <a href="#">Jadwal</a>
-    <a href="#">Struktur</a>
   </div>
 </div>
 
 <div class="main">
+  <div class="card">
+    <h2>Dashboard Siswa</h2>
+    <p><b>Nama:</b> <span id="nama"></span></p>
+    <p><b>Kelas:</b> X TKJ 1</p>
+  </div>
+
+  <div class="card">
+    <h2>Visi & Misi Kelas</h2>
+    <p id="visiText"></p>
+    <p id="misiText"></p>
+  </div>
+
   <div class="card">
     <h2>Jadwal Pelajaran</h2>
     <ul id="listJadwal"></ul>
@@ -20,4 +32,10 @@ if(localStorage.getItem("login")!=="siswa")location.href="../index.html";
 </div>
 
 <script src="../js/dashboard.js"></script>
-<script>tampilJadwal()</script>
+<script>
+document.getElementById("nama").innerText=localStorage.getItem("username");
+let vm=JSON.parse(localStorage.getItem("visiMisi"));
+visiText.innerText=vm.visi;
+misiText.innerText=vm.misi;
+tampilJadwal();
+</script>
