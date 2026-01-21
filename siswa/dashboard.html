@@ -1,5 +1,5 @@
 <script>
-if(localStorage.getItem("login")!=="admin")location.href="../index.html";
+if(localStorage.getItem("login")!=="siswa")location.href="../index.html";
 </script>
 
 <link rel="stylesheet" href="../css/dashboard.css">
@@ -14,19 +14,8 @@ if(localStorage.getItem("login")!=="admin")location.href="../index.html";
 
 <div class="main">
   <div class="card">
-    <h2>Tambah Jadwal</h2>
-    <input id="hari" placeholder="Hari">
-    <input id="mapel" placeholder="Mapel">
-    <button onclick="simpanJadwal()">Simpan</button>
+    <h2>Jadwal Pelajaran</h2>
     <ul id="listJadwal"></ul>
-  </div>
-
-  <div class="card">
-    <h2>Struktur Kelas</h2>
-    <input id="ketua" placeholder="Ketua">
-    <input id="wakil" placeholder="Wakil">
-    <input id="sekretaris" placeholder="Sekretaris">
-    <button onclick="simpanStruktur()">Simpan</button>
   </div>
 </div>
 
