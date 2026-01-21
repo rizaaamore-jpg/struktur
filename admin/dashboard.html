@@ -23,6 +23,12 @@
 <input id="newPass" placeholder="Password">
 <button onclick="tambahAdmin()">Tambah</button>
 
+  <script>
+if(!localStorage.getItem("login")){
+  location.href = "../index.html";
+}
+  </script>
+  
 <script src="../js/sidebar.js"></script>
 <script src="../js/admin.js"></script>
 </body>
