@@ -1,16 +1,29 @@
-<div class="login-card">
-  <img src="assets/img/logo.png" class="logo">
-  <h2>Login</h2>
+<body>
+  <div class="bg"></div>
 
-  <input id="user" placeholder="Username">
-  <input id="pass" type="password" placeholder="Password">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <img src="assets/img/logo.png" class="logo">
 
-  <button onclick="login('siswa')">Login Siswa</button>
-  <button onclick="login('admin')" class="admin-btn">Login Admin</button>
+      <h2>Sistem Kelas Digital</h2>
+      <p class="subtitle">Silakan login</p>
 
-  <hr>
+      <input id="user" placeholder="Username">
+      <input id="pass" type="password" placeholder="Password">
 
-  <button onclick="registerSiswa()" class="register-btn">
-    Register Siswa
-  </button>
-</div>
+      <button class="btn siswa" onclick="login('siswa')">
+        Login Siswa
+      </button>
+
+      <button class="btn admin" onclick="login('admin')">
+        Login Admin
+      </button>
+
+      <button class="btn register" onclick="registerSiswa()">
+        Register Siswa
+      </button>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
