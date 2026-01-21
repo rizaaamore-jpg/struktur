@@ -48,3 +48,36 @@ function registerSiswa() {
 
   alert("Register berhasil, silakan login");
 }
+
+function login(role, btn) {
+  const u = user.value.trim();
+  const p = pass.value.trim();
+
+  if (btn) {
+    btn.classList.add("loading");
+    btn.disabled = true;
+  }
+
+  let data = role === "admin" ? admins : siswa;
+  let found = data.find(d => d.user === u && d.pass === p);
+
+  setTimeout(() => {
+    if (!found) {
+      alert("Username atau Password salah");
+
+      if (btn) {
+        btn.classList.remove("loading");
+        btn.disabled = false;
+      }
+      return;
+    }
+
+    localStorage.setItem("login", role);
+    localStorage.setItem("username", u);
+
+    location.href = role === "admin"
+      ? "admin/dashboard.html"
+      : "siswa/dashboard.html";
+
+  }, 1200); // delay animasi
+}
