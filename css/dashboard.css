@@ -1,0 +1,49 @@
+body{margin:0;font-family:Arial;background:#eafff3}
+
+.sidebar{
+  position:fixed;
+  width:240px;
+  height:100vh;
+  background:#2ecc71;
+  padding:15px;
+  transition:.3s;
+}
+
+.sidebar.close{width:70px}
+
+.toggle{
+  background:white;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
+  margin-bottom:20px;
+}
+
+.menu a{
+  display:block;
+  background:white;
+  color:#2ecc71;
+  padding:12px;
+  margin:10px 0;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.main{
+  margin-left:260px;
+  padding:25px;
+  transition:.3s;
+}
+
+.sidebar.close ~ .main{margin-left:90px}
+
+.card{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  margin-bottom:20px;
+}
+
+h2{margin-top:0}
