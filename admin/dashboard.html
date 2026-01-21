@@ -3,18 +3,20 @@ if(localStorage.getItem("login")!=="admin")location.href="../index.html";
 </script>
 
 <link rel="stylesheet" href="../css/dashboard.css">
+
 <div class="sidebar">
   <button class="toggle" onclick="toggleSidebar()">☰</button>
   <div class="menu">
     <a href="#">Dashboard</a>
     <a href="#">Jadwal</a>
     <a href="#">Struktur</a>
+    <a href="#">Visi Misi</a>
   </div>
 </div>
 
 <div class="main">
   <div class="card">
-    <h2>Tambah Jadwal</h2>
+    <h2>Edit Jadwal</h2>
     <input id="hari" placeholder="Hari">
     <input id="mapel" placeholder="Mapel">
     <button onclick="simpanJadwal()">Simpan</button>
@@ -27,6 +29,13 @@ if(localStorage.getItem("login")!=="admin")location.href="../index.html";
     <input id="wakil" placeholder="Wakil">
     <input id="sekretaris" placeholder="Sekretaris">
     <button onclick="simpanStruktur()">Simpan</button>
+  </div>
+
+  <div class="card">
+    <h2>Visi & Misi</h2>
+    <textarea id="visi"></textarea>
+    <textarea id="misi"></textarea>
+    <button onclick="simpanVisi()">Simpan</button>
   </div>
 </div>
 
