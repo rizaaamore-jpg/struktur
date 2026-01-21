@@ -27,7 +27,7 @@ function login(role,btn){
     localStorage.setItem("login",role);
     localStorage.setItem("username",u);
     location.href=role==="admin"?"admin/dashboard.html":"siswa/dashboard.html";
-  },1200);
+  },1000);
 }
 
 function registerSiswa(){
@@ -35,7 +35,8 @@ function registerSiswa(){
   let p=pass.value.trim();
   if(!u||!p)return alert("Lengkapi data");
   if(siswa.find(s=>s.user===u))return alert("Username sudah ada");
-  siswa.push({user:u,pass:p});
+
+  siswa.push({user:u,pass:p,kelas:"X TKJ 1"});
   localStorage.setItem("siswa",JSON.stringify(siswa));
   alert("Register berhasil");
 }
