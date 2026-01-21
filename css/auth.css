@@ -24,9 +24,7 @@ body{margin:0;height:100vh;overflow:hidden}
   box-shadow:0 30px 60px rgba(0,0,0,.3);
   animation:float 3s ease-in-out infinite;
 }
-@keyframes float{
-  50%{transform:translateY(-12px)}
-}
+@keyframes float{50%{transform:translateY(-12px)}}
 
 .logo{width:90px}
 .subtitle{font-size:14px;color:#555}
