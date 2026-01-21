@@ -1,83 +1,41 @@
-// ambil data atau buat default
 let admins = JSON.parse(localStorage.getItem("admins")) || [
-  { user: "admin", pass: "12345" }
+  {user:"admin",pass:"12345"}
 ];
-
 let siswa = JSON.parse(localStorage.getItem("siswa")) || [];
 
-// simpan default kalau belum ada
-localStorage.setItem("admins", JSON.stringify(admins));
-localStorage.setItem("siswa", JSON.stringify(siswa));
+localStorage.setItem("admins",JSON.stringify(admins));
+localStorage.setItem("siswa",JSON.stringify(siswa));
 
-function login(role) {
-  const u = user.value.trim();
-  const p = pass.value.trim();
+function login(role,btn){
+  let u=user.value.trim();
+  let p=pass.value.trim();
+  if(!u||!p)return alert("Lengkapi data");
 
-  let data = role === "admin" ? admins : siswa;
-  let found = data.find(d => d.user === u && d.pass === p);
+  btn.classList.add("loading");
+  btn.disabled=true;
 
-  if (!found) {
-    alert("Username atau Password salah");
-    return;
-  }
+  let data=role==="admin"?admins:siswa;
+  let ok=data.find(d=>d.user===u&&d.pass===p);
 
-  localStorage.setItem("login", role);
-  localStorage.setItem("username", u);
-
-  location.href = role === "admin"
-    ? "admin/dashboard.html"
-    : "siswa/dashboard.html";
-}
-
-function registerSiswa() {
-  const u = user.value.trim();
-  const p = pass.value.trim();
-
-  if (!u || !p) {
-    alert("Lengkapi data");
-    return;
-  }
-
-  if (siswa.find(s => s.user === u)) {
-    alert("Username sudah dipakai");
-    return;
-  }
-
-  siswa.push({ user: u, pass: p });
-  localStorage.setItem("siswa", JSON.stringify(siswa));
-
-  alert("Register berhasil, silakan login");
-}
-
-function login(role, btn) {
-  const u = user.value.trim();
-  const p = pass.value.trim();
-
-  if (btn) {
-    btn.classList.add("loading");
-    btn.disabled = true;
-  }
-
-  let data = role === "admin" ? admins : siswa;
-  let found = data.find(d => d.user === u && d.pass === p);
-
-  setTimeout(() => {
-    if (!found) {
-      alert("Username atau Password salah");
-
-      if (btn) {
-        btn.classList.remove("loading");
-        btn.disabled = false;
-      }
+  setTimeout(()=>{
+    if(!ok){
+      alert("Login gagal");
+      btn.classList.remove("loading");
+      btn.disabled=false;
       return;
     }
+    localStorage.setItem("login",role);
+    localStorage.setItem("username",u);
+    location.href=role==="admin"?"admin/dashboard.html":"siswa/dashboard.html";
+  },1200);
+}
 
-    localStorage.setItem("login", role);
-    localStorage.setItem("username", u);
-
-    location.href = role === "admin"
-      ? "admin/dashboard.html"
-      : "siswa/dashboard.html";
-
-  }, 1200); // delay animasi
+function registerSiswa(){
+  let u=user.value.trim();
+  let p=pass.value.trim();
+  if(!u||!p)return alert("Lengkapi data");
+  if(siswa.find(s=>s.user===u))return alert("Username sudah ada");
+  siswa.push({user:u,pass:p});
+  localStorage.setItem("siswa",JSON.stringify(siswa));
+  alert("Register berhasil");
 }
