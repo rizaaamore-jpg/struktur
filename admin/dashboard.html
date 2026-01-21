@@ -1,40 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="../css/dashboard.css">
-</head>
-<body>
+<script>
+if(localStorage.getItem("login")!=="admin")location.href="../index.html";
+</script>
 
+<link rel="stylesheet" href="../css/dashboard.css">
 <div class="sidebar">
-  <button onclick="toggleSidebar()">☰</button>
-  <a href="#" onclick="showJadwal()">Edit Jadwal</a>
+  <button class="toggle" onclick="toggleSidebar()">☰</button>
+  <div class="menu">
+    <a href="#">Dashboard</a>
+    <a href="#">Jadwal</a>
+    <a href="#">Struktur</a>
+  </div>
 </div>
 
 <div class="main">
-  <h2>Admin - Edit Jadwal</h2>
+  <div class="card">
+    <h2>Tambah Jadwal</h2>
+    <input id="hari" placeholder="Hari">
+    <input id="mapel" placeholder="Mapel">
+    <button onclick="simpanJadwal()">Simpan</button>
+    <ul id="listJadwal"></ul>
+  </div>
 
-  <textarea id="jadwal" rows="10"></textarea>
-  <br>
-  <button onclick="simpan()">Simpan</button>
+  <div class="card">
+    <h2>Struktur Kelas</h2>
+    <input id="ketua" placeholder="Ketua">
+    <input id="wakil" placeholder="Wakil">
+    <input id="sekretaris" placeholder="Sekretaris">
+    <button onclick="simpanStruktur()">Simpan</button>
+  </div>
 </div>
 
-  <button class="btn admin" onclick="login('admin', this)">
-  <span class="btn-text">Login Admin</span>
-  <span class="loader"></span>
-  </button>
-
-  <h3>Tambah Admin</h3>
-<input id="newAdmin" placeholder="Username Admin">
-<input id="newPass" placeholder="Password">
-<button onclick="tambahAdmin()">Tambah</button>
-
-  <script>
-if(!localStorage.getItem("login")){
-  location.href = "../index.html";
-}
-  </script>
-  
-<script src="../js/sidebar.js"></script>
-<script src="../js/admin.js"></script>
-</body>
-</html>
+<script src="../js/dashboard.js"></script>
+<script>tampilJadwal()</script>
